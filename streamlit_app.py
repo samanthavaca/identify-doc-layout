@@ -5,6 +5,8 @@ from PIL import Image
 import pytesseract
 import matplotlib.pyplot as plt
 
+# --- Python functions for feature matching ---
+
 # Calculate the median angle from the keypoint orientations. Using the median seems to work as a healthier average for the document angle.
 def calculate_median_angle(good_matches, keypoints_template, keypoints_image):
     angles = []
@@ -280,8 +282,8 @@ def identify_doc_layout(template, image):
         print("Not enough matches are found to be able to crop - {}/{}. Please make sure that all documents are of the same type.".format(len(good_matches), 0))
         return None
 
-# --- Streamlit Interface ---
-st.title("Document Layout Identifier and Quality Checker")
+# --- Streamlit ---
+st.title("Feature Matching for Document Layout Identification")
 
 template_file = st.file_uploader("Upload Template Image", type=["jpg", "jpeg", "png"])
 input_file = st.file_uploader("Upload Input Image", type=["jpg", "jpeg", "png"])
